@@ -1,7 +1,7 @@
 # Intro
 
-It's snippet code for collecting the best practices of writing testable code, and the anti-patterns that should be
-avoided.
+It's snippet code for collecting the best practices of writing testable code, following the clean architecture, and come
+out some anti-patterns.
 
 # How to run
 
@@ -20,11 +20,26 @@ On purpose, In this repo only have the backend code, and pure built-in python, s
 - Setup/teardown
 - Command to control the test scale
 
-# Regard to some clean architecture
+# Regard to some clean architecture (some thought from my own)
 
 Even after implementing a whole fake app, the importance of some layers still need to think twice,
 
-# Anti-pattern
+## presenter
+
+Do we need presenter?
+=> I guess, it's not. Don't overly optimize the code. If in our case, the output work is compartively simple. we
+shouldn't tackle that part.
+
+## What’s the difference between a repository and a DAO?
+
+Imagine you’re a person representing the repository layer. Do you know about the existence of the database? No, you
+don’t. Your job is to interact with the use cases, without concerning yourself with how or where the data is stored.
+
+Now, if you represent the DAO (Data Access Object), you have some awareness of a physical place where data is kept. The
+DAO acts like instructions to someone (or something) responsible for writing down information and retrieving old records
+from storage.
+
+# Anti-pattern (or maybe some reasonable modification)
 
 ## Story I
 
@@ -44,5 +59,4 @@ Mostly agree to the reason to remvoe the ORM from our case. So what to do? Is th
 some type of query builder? or raw sql
 
 ## Story III
-
-Do we need presenter? One more abstract, do we really need it? If we decide to refator that part how to do?
+Ok. Fastapi is a good framework. How do we adapt this framework to our case? Which part should we keep and which part.
